@@ -31,7 +31,7 @@ public class QuanLySach {
     public void capNhatSach(String maSach) {
         Sach sachCanCapNhat = timKiemTheoMa(maSach);
         if (sachCanCapNhat == null) {
-            System.out.println("❌ Không tìm thấy sách với mã: " + maSach);
+            System.out.println(" Không tìm thấy sách với mã: " + maSach);
             return;
         }
         System.out.println("\n--- Cập nhật sách có mã: " + maSach + " ---");
