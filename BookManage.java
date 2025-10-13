@@ -81,10 +81,10 @@ public class BookManage {
         //Tìm kiếm theo mã sách
         public void searchBook(){
             System.out.print("Nhap ma sach can tim: ");
-            String updateId = sc.nextLine().trim();
+            String searchId = sc.nextLine().trim();
 
             for(Book a : ar)
-                if(a.bookId.equalsIgnoreCase(updateId)){
+                if(a.bookId.equalsIgnoreCase(searchId)){
                     System.out.println("Thong tin sach can tim");
                     a.displayInfo();
                     return;
