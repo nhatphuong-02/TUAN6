@@ -1,6 +1,6 @@
-package Tuan5;
+package TUAN6;
 
-public class SachTieuThuyet extends Sach {
+public class SachTieuThuyet extends Sach implements IkiemKe {
     private String theLoai;
     private boolean laSachSeries;
 
@@ -8,39 +8,37 @@ public class SachTieuThuyet extends Sach {
         super();
     } 
 
-    public SachTieuThuyet(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong){
-        super(maSach, tieuDe, tacGia, namXuatBan, soLuong);
+    public SachTieuThuyet(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, double giaCoBan){
+        super(maSach, tieuDe, tacGia, namXuatBan, soLuong, giaCoBan);
     }
 
-    public SachTieuThuyet(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, String theLoai, boolean laSachSeries){
-        super(maSach, tieuDe, tacGia, namXuatBan, soLuong);
+    public SachTieuThuyet(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, double giaCoBan, String theLoai, boolean laSachSeries){
+        super(maSach, tieuDe, tacGia, namXuatBan, soLuong, giaCoBan);
         this.theLoai=theLoai;
         this.laSachSeries=laSachSeries;
     }
 
-    public void hienThiThongTin(){
-        super.hienThiThongTin();
-        System.out.println("The loai: "+theLoai);
-        System.out.println("Nha xuat ban: "+(laSachSeries ? "Co" : "Khong"));
-        System.out.println("---------------------");
-    }
-
+    @Override
     public String getMaSach() {
         return super.getMaSach();
     }
 
+    @Override
     public int getNamXuatBan() {
         return super.getNamXuatBan();
     }
 
+    @Override
     public int getSoLuong() {
         return super.getSoLuong();
     }
 
+    @Override
     public String getTacGia() {
         return super.getTacGia();
     }
 
+    @Override
     public String getTieuDe() {
         return super.getTieuDe();
     }
@@ -53,26 +51,40 @@ public class SachTieuThuyet extends Sach {
         return theLoai;
     }
     
+    @Override
+    public double getGiaCoBan() {
+        return super.getGiaCoBan();
+    }
+
+    @Override
     public void setMaSach(String maSach) {
         super.setMaSach(maSach);
     }
 
+    @Override
     public void setNamXuatBan(int namXuatBan) {
         super.setNamXuatBan(namXuatBan);
     }
     
+    @Override
     public void setSoLuong(int soLuong) {
         super.setSoLuong(soLuong);
     }
 
+    @Override
     public void setTacGia(String tacGia) {
         super.setTacGia(tacGia);
     }
 
+    @Override
     public void setTieuDe(String tieuDe) {
         super.setTieuDe(tieuDe);
     }
 
+    @Override
+    public void setGiaCoBan(double giaCoBan) {
+        super.setGiaCoBan(giaCoBan);
+    }
     public void setLaSachSeries(boolean laSachSeries) {
         this.laSachSeries = laSachSeries;
     }
@@ -85,7 +97,28 @@ public class SachTieuThuyet extends Sach {
     public String toString() {
         return super.toString()
         + "\nThe loai: "+theLoai
-        + "\nLa sach series: "+(laSachSeries ? "Co" : "Khong")
-        +"\n-----------------------";
+        + "\nLa sach series: "+(laSachSeries ? "Series" : "Khong phai Series");
+    }
+
+    @Override
+    public double tinhGiaBan() {
+       return laSachSeries?giaCoBan*1.5:0;
+    }
+
+    @Override
+    public boolean kiemTraTonKho(int soLuongToiThieu){
+        return getSoLuong()>=soLuongToiThieu;
+    }
+
+    @Override
+    public void capNhatViTri(String viTriMoi) {
+        System.out.println("Đã chuyển sách "+getTieuDe()+" đến khu vực: "+viTriMoi);
+    }
+    
+    public void hienThiThongTin(){
+        super.hienThiThongTin();
+        System.out.println("The loai: "+theLoai);
+        System.out.println("Nha xuat ban: "+(laSachSeries ? "Co" : "Khong"));
+        System.out.println("---------------------");
     }
 }
